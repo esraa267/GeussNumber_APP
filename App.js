@@ -7,21 +7,27 @@ import GameOver from "./Screens/GameOver";
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [isOver, setIsOver] = useState(false);
+  const [count, setCount] = useState(false);
+
   const StartGameHandler = (selectednum) => {
     setUserNumber(selectednum);
+    setIsOver(false);
   };
   let content;
   if (userNumber && !isOver) {
     content = (
       <GameScreen
         userchoise={userNumber}
-        onGameOver={(res) => {
-          if (res) setIsOver(true);
+        onGameOver={() => {
+          setIsOver(true);
+        }}
+        onCount={() => {
+          setCount((count) => count + 1);
         }}
       />
     );
   } else if (userNumber && isOver) {
-    content = <GameOver onStartGame={StartGameHandler} />;
+    content = <GameOver count={count} userChoise={userNumber} onStartGame={StartGameHandler} />;
   } else {
     content = <StartGame onStartGame={StartGameHandler} />;
   }

@@ -37,6 +37,7 @@ const GameScreen = (props) => {
       currentGuess
     );
     setCurrentGuess(nextNumber);
+    props.onCount()
   };
   useEffect(() => {
     if (currentGuess === props.userchoise) {

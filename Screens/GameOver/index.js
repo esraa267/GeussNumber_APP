@@ -4,8 +4,8 @@ const GameOver = (props) => {
   return (
     <View style={styles.screen}>
       <Text>The Game is Over!</Text>
-      <Text>Number of rounds:{}</Text>
-      <Text>Number was :{}</Text>
+      <Text>Number of rounds:{props.count}</Text>
+      <Text>Number was :{props.userChoise}</Text>
       <Button title="New Game" onPress={() => props.onStartGame(0)} />
     </View>
   );
